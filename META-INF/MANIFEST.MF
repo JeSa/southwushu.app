@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: South Wushu Competition
+Bundle-SymbolicName: southwushu.app; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Vendor: JeSa
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.gef;bundle-version="3.7.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: lib/derby.jar,
+ lib/eclipselink.jar,
+ lib/javax.persistence_2.0.3.v201010191057.jar,
+ .

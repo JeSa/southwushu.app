@@ -4,6 +4,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -53,9 +55,17 @@ public class PersonExplorerView extends ViewPart {
 			public void doubleClick(DoubleClickEvent event) {
 				IHandlerService handlerService = (IHandlerService) getSite().getService(IHandlerService.class);
 				try {
-					handlerService.executeCommand("com.southwushu.app.commands.createperson", null);
+					ISelection selection = getSite().getSelectionProvider().getSelection();
+					if (selection != null && selection instanceof IStructuredSelection) {
+						Object obj = ((IStructuredSelection) selection).getFirstElement();
+						if (obj instanceof Person)
+							handlerService.executeCommand("com.southwushu.app.commands.editperson", null);
+						else
+							handlerService.executeCommand("com.southwushu.app.commands.editteam", null);
+					}
 				} catch (Exception ex) {
-					throw new RuntimeException("de.vogella.rcp.editor.example.openEditor not found");
+					System.out.println(ex.getMessage());
+					//throw new RuntimeException("Editor not found");
 				}
 			}
 		});

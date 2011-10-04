@@ -2,6 +2,7 @@ package com.southwushu.app.dialogs;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -10,9 +11,17 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.forms.FormDialog;
+import org.eclipse.ui.forms.IManagedForm;
+import org.eclipse.ui.forms.ManagedForm;
+import org.eclipse.ui.forms.widgets.Form;
+import org.eclipse.ui.forms.widgets.FormToolkit;
+import org.eclipse.ui.forms.widgets.ScrolledForm;
 
-public class AddPersonDialog extends Dialog{
+public class AddPersonDialog extends FormDialog{
 
+	private FormToolkit toolkit;
+	
 	private Text firstName;
 	private Text lastName;
 	private Text middleName;
@@ -22,50 +31,34 @@ public class AddPersonDialog extends Dialog{
 	}
 	
 	@Override
-	protected void configureShell(Shell newShell) {
-		super.configureShell(newShell);
-		newShell.setText("Создание ученика");
+	protected Control createDialogArea(Composite parent) {
+		toolkit = new FormToolkit(parent.getDisplay());
+		Form sform = toolkit.createForm(parent);
+		sform.setLayoutData(new GridData(GridData.FILL_BOTH));
+		ManagedForm mform = new ManagedForm(parent);
+		createFormContent(mform);
+		applyDialogFont(sform.getBody());
+		return sform;
 	}
 	
 	@Override
-	protected Control createDialogArea(Composite parent) {
-		Composite composite = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout(2, false);
-		composite.setLayout(layout);
-
-		Label label = new Label(composite, SWT.NONE);
-		label.setText("Фамилия:");
-		label.setLayoutData(new GridData(GridData.END, GridData.CENTER,	false, false));
-
-		lastName = new Text(composite, SWT.BORDER);
-		lastName.setLayoutData(new GridData(GridData.FILL, GridData.FILL,	true, false));
-
-		label = new Label(composite, SWT.NONE);
-		label.setText("Имя:");
-		label.setLayoutData(new GridData(GridData.END, GridData.CENTER,	false, false));
-
-		firstName = new Text(composite, SWT.BORDER);
-		firstName.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, false));
-
-		label = new Label(composite, SWT.NONE);
-		label.setText("Отчество:");
-		label.setLayoutData(new GridData(GridData.END, GridData.CENTER,	false, false));
-
-		middleName = new Text(composite, SWT.BORDER);
-		middleName.setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, false));
-		return composite;
+	protected void createFormContent(IManagedForm mform) {
+		//FormToolkit toolkit = mform.getToolkit();
+		//Form form = mform.getForm();
+		//form.setText("Hello, Eclipse Forms");
+		//toolkit.decorateFormHeading(form);
 	}
-
+	
 	@Override
 	protected void okPressed() {
 		if (lastName.getText().equals("")) {
-			MessageDialog.openError(getShell(), "Внимание",
-					"Фамилия должна быть заполнена");
+			MessageDialog.openError(getShell(), "Р’РЅРёРјР°РЅРёРµ",
+					"Р¤Р°РјРёР»РёСЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р·Р°РїРѕР»РЅРµРЅР°");
 			return;
 		}
 		if (firstName.equals("")) {
-			MessageDialog.openError(getShell(), "Внимание",
-					"Имя должно быть заполненно");
+			MessageDialog.openError(getShell(), "Р’РЅРёРјР°РЅРёРµ",
+					"Р�РјСЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р·Р°РїРѕР»РЅРµРЅРЅРѕ");
 			return;
 		}
 

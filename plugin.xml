@@ -136,8 +136,20 @@
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="com.southwushu.app.handlers.CreatePerson"
+            class="com.southwushu.app.handlers.CreatePersonHandler"
             commandId="com.southwushu.app.commands.createperson">
+      </handler>
+      <handler
+            class="com.southwushu.app.handlers.EditPersonHandler"
+            commandId="com.southwushu.app.commands.editperson">
+      </handler>
+      <handler
+            class="com.southwushu.app.handlers.CreateTeamHandler"
+            commandId="com.southwushu.app.commands.createteam">
+      </handler>
+      <handler
+            class="com.southwushu.app.handlers.EditTeamHandler"
+            commandId="com.southwushu.app.commands.editteam">
       </handler>
    </extension>
 

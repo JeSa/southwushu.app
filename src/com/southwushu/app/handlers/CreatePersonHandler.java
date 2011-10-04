@@ -9,10 +9,11 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.southwushu.app.dialogs.AddPersonDialog;
 
-public class CreatePerson extends AbstractHandler {
+public class CreatePersonHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
+		
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
 		AddPersonDialog addPerson = new AddPersonDialog(window.getShell());
 		int code = addPerson.open();

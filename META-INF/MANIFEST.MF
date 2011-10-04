@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0
 Bundle-Vendor: JeSa
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
+ org.eclipse.ui.forms;bundle-version="3.5.100",
  org.eclipse.gef;bundle-version="3.7.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: lib/derby.jar,

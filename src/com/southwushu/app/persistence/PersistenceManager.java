@@ -22,6 +22,12 @@ public class PersistenceManager {
 		return query.getResultList();
 	}
 	
+	public static Object execSingleNQuery(String name, Object id) {
+		Query query = manager.createNamedQuery(name);
+		query.setParameter("id", id);
+		return query.getSingleResult();
+	}
+	
 	public static List<Object> execNamedQuery(String name, Object id) {
 		Query query = manager.createNamedQuery(name);
 		query.setParameter("id", id);

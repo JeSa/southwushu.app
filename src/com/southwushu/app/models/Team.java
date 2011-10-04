@@ -6,7 +6,9 @@ import javax.persistence.*;
 
 @NamedQueries({
 	@NamedQuery(name="team.find_all",
-			    query="SELECT t FROM Team t")
+			    query="SELECT t FROM Team t"),
+	@NamedQuery(name="team.find_by_id",
+				query="SELECT t FROM Team t WHERE t.id = :id"),
 })
 
 @Entity
@@ -14,6 +16,7 @@ import javax.persistence.*;
 public class Team {
 	
 	public static final String GET_ALL = "team.find_all";
+	public static final String GET_BY_ID = "team.find_by_id";
 	
 	@Id
 	@GeneratedValue

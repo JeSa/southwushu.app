@@ -43,9 +43,9 @@ public class AddPersonDialog extends FormDialog{
 	
 	@Override
 	protected void createFormContent(IManagedForm mform) {
-		//FormToolkit toolkit = mform.getToolkit();
-		//Form form = mform.getForm();
-		//form.setText("Hello, Eclipse Forms");
+		FormToolkit toolkit = mform.getToolkit();
+		ScrolledForm form = mform.getForm();
+		form.setText("Hello, Eclipse Forms");
 		//toolkit.decorateFormHeading(form);
 	}
 	

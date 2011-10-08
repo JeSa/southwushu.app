@@ -25,14 +25,14 @@ public class PersonExplorerView extends ViewPart {
 
 	public final static String ID = "com.southwushu.app.views.personexplorerview";
 	
-	private TreeViewer treeViewer;
+	public TreeViewer treeViewer;
 	private AdapterFactory adapterFactory = new AdapterFactory();
 	
 	public PersonExplorerView() {
 		Platform.getAdapterManager().registerAdapters(adapterFactory, Federation.class);
 		Platform.getAdapterManager().registerAdapters(adapterFactory, Team.class);
 		Platform.getAdapterManager().registerAdapters(adapterFactory, Person.class);
-		setUpDatabase();
+		//setUpDatabase();
 	}
 
 	@Override

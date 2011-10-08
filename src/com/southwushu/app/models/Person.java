@@ -18,6 +18,15 @@ import javax.persistence.*;
 @Table(name="persons")
 public class Person {
 	
+	
+	public Person(){		
+	}
+	
+	public Person(String f, String l){
+		setFirstName(f);
+		setLastName(l);
+	}
+	
 	public static final String GET_ALL = "person.find_all";
 	public static final String GET_BY_ID = "person.find_by_id";
 	public static final String GET_COACH_BY_TEAM = "person.find_coach_by_team";

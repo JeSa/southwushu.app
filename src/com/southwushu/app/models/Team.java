@@ -25,6 +25,14 @@ public class Team {
 	private String name;
 	private String city;
 	
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	@OneToMany(mappedBy="team")
 	private List<Person> students;
 
